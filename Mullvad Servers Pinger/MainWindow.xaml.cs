@@ -127,7 +127,7 @@ namespace Mullvad_Servers_Pinger
             saveFileDialog.Filter = "Text File|*.txt";
             saveFileDialog.Title = "Save Your Results to a File";
             saveFileDialog.ShowDialog();
-            if (File.Exists(saveFileDialog.FileName))
+            if (!string.IsNullOrEmpty(saveFileDialog.FileName) && saveFileDialog.FileName != "results.txt")
             {
                 File.WriteAllText(saveFileDialog.FileName, _fileResults);
                 var result = MessageBox.Show("Would you like to view the results file?","Results",MessageBoxButton.YesNo, MessageBoxImage.Question);
