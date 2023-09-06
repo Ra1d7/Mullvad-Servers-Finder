@@ -76,9 +76,11 @@ namespace Mullvad_Servers_Pinger
                 catch
                 {
                     infoLbl.Content = "Failed to fetch relays live... loading from local file";
+                    MessageBox.Show("Failed to Fetch from live relays","Network Connectivity Error",MessageBoxButton.OK,MessageBoxImage.Error);
+                    Close();
                 }
             }
-            var responseString = response == null ? File.ReadAllText(@"C:/Users/thmrg/Desktop/ip_list.txt") : await response.Content.ReadAsStringAsync();
+            var responseString = await response.Content.ReadAsStringAsync();
             List<Relay>? relays = JsonConvert.DeserializeObject<List<Relay>>(responseString);
             List<PingResponse> pingResponses = new List<PingResponse>();
             infoLbl.Content = $"Got {relays.Count} relays!";
