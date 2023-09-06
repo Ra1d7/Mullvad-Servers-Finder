@@ -86,8 +86,8 @@ namespace Mullvad_Servers_Pinger
             List<PingResponse> pingResponses = new List<PingResponse>();
             infoLbl.Content = $"Got {relays.Count} relays!";
             int i = 1;
-            progress.Maximum = 10;
-            foreach (var relay in relays.Take(10))
+            progress.Maximum = relays.Count;
+            foreach (var relay in relays)
             {
 
                 progress.Value = i;
