@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <RootNamespace>Mullvad_Servers_Pinger</RootNamespace>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>Untitled-_54-x-42-px_.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="mullvad-logo-icon-2019-800x789.webp" />
+    <None Remove="new.png" />
+    <None Remove="Untitled %2854 x 42 px%29.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Untitled-_54-x-42-px_.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="mullvad-logo-icon-2019-800x789.webp" />
+    <Resource Include="new.png" />
+    <Resource Include="Untitled (54 x 42 px).png" />
+  </ItemGroup>
+
+</Project>
