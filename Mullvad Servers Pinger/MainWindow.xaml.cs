@@ -54,6 +54,7 @@ namespace Mullvad_Servers_Pinger
             FindBtn.Visibility = Visibility.Hidden;
             ignoreLbl.Visibility = Visibility.Hidden;
             FindBtn_Copy.Visibility = Visibility.Hidden;
+            resultsLocationCheckBox.Visibility = Visibility.Hidden;
             //
             progress.Visibility = Visibility.Visible;
             progress.Opacity = 100;
@@ -85,8 +86,8 @@ namespace Mullvad_Servers_Pinger
             List<PingResponse> pingResponses = new List<PingResponse>();
             infoLbl.Content = $"Got {relays.Count} relays!";
             int i = 1;
-            progress.Maximum = relays.Count;
-            foreach (var relay in relays)
+            progress.Maximum = 10;
+            foreach (var relay in relays.Take(10))
             {
 
                 progress.Value = i;
@@ -122,17 +123,29 @@ namespace Mullvad_Servers_Pinger
             _fileResults += "= Normal Relays =\n";
             pingResponses.SkipWhile(x => x.time >= MaxPing).OrderBy(x => x.time).ToList().ForEach(resp => _fileResults += $"{ resp.hostname} {resp.country} {resp.city} [{resp.time}ms]\n");
             _fileResults += "[+] ========== End ========== [+]\n";
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.FileName = "results.txt";
-            saveFileDialog.Filter = "Text File|*.txt";
-            saveFileDialog.Title = "Save Your Results to a File";
-            saveFileDialog.ShowDialog();
-            if (!string.IsNullOrEmpty(saveFileDialog.FileName) && saveFileDialog.FileName != "results.txt")
+            if(resultsLocationCheckBox.IsChecked == true)
             {
-                File.WriteAllText(saveFileDialog.FileName, _fileResults);
-                var result = MessageBox.Show("Would you like to view the results file?","Results",MessageBoxButton.YesNo, MessageBoxImage.Question);
-                if(result == MessageBoxResult.Yes)
-                    OpenFile(saveFileDialog.FileName);
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.FileName = "results.txt";
+                saveFileDialog.Filter = "Text File|*.txt";
+                saveFileDialog.Title = "Save Your Results to a File";
+                saveFileDialog.ShowDialog();
+
+                if (!string.IsNullOrEmpty(saveFileDialog.FileName) && saveFileDialog.FileName != "results.txt")
+                {
+                    File.WriteAllText(saveFileDialog.FileName, _fileResults);
+                    var result = MessageBox.Show("Would you like to view the results file?","Results",MessageBoxButton.YesNo, MessageBoxImage.Question);
+                    if(result == MessageBoxResult.Yes)
+                        OpenFile(saveFileDialog.FileName);
+                }
+            }
+            else
+            {
+
+                File.WriteAllText("results.txt", _fileResults);
+                var result = MessageBox.Show("Would you like to view the results file?", "Results", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                    OpenFile("results.txt");
             }
             
            

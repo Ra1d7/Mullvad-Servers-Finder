@@ -14,7 +14,7 @@
         </Grid.ColumnDefinitions>
         <Image HorizontalAlignment="Left" Margin="121,34,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.511,0.522" Source="/Untitled (54 x 42 px).png" Grid.ColumnSpan="2" Height="107" Width="140" Grid.Column="1"/>
         <Label Content="Mullvad Servers Finder" HorizontalAlignment="Left" Margin="80,10,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" Grid.ColumnSpan="2" Width="220" FontFamily="Bahnschrift Light" FontSize="20" Height="34" Grid.Column="1"/>
-        <CheckBox x:Name="checkBridges" Content="Check Bridges" HorizontalAlignment="Left" Margin="121,289,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Bahnschrift Light" FontSize="16" Grid.ColumnSpan="2" Grid.Column="1"/>
+        <CheckBox x:Name="checkBridges" Content="Check Bridges" HorizontalAlignment="Left" Margin="10,294,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Bahnschrift Light" FontSize="16" Grid.Column="1"/>
         <Slider x:Name="max_time_slider" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="4,256,0,0" VerticalAlignment="Top" Width="372" Height="28" Maximum="1000" SmallChange="1" ValueChanged="max_time_slider_ValueChanged_1" Grid.Column="1"/>
         <StackPanel Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="47,0,0,0" Orientation="Horizontal" VerticalAlignment="Center" Grid.Column="1">
             <Label x:Name="ignoreLbl" Content="Ignore Relays With Ping Above:" Foreground="White" FontFamily="Bahnschrift Light" FontSize="16" Width="234"/>
@@ -27,6 +27,7 @@
         <Label x:Name="infoLbl" Content="Starting.." HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="38,235,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Bahnschrift Light" FontSize="18" Grid.ColumnSpan="2" Width="304" HorizontalAlignment="Left" Grid.Column="1" Visibility="Hidden"/>
         <ProgressBar x:Name="progress" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="10" Margin="0,284,0,0" VerticalAlignment="Top" Width="388" Background="{x:Null}" Foreground="#FFCC7D00" SmallChange="1" Cursor="Hand" BorderBrush="#CCFFFFFF" Visibility="Hidden" Grid.Column="1" Maximum="1" BorderThickness="0.5,0.5,0.5,0.5"/>
         <Button x:Name="finalexit" Content="Exit" HorizontalAlignment="Left" Margin="127,379,0,0" VerticalAlignment="Top" Height="51" Width="125" FontFamily="Bahnschrift Light" FontSize="22" Background="#FFCC7D00" Foreground="White" BorderThickness="1,1,1,1" Click="FindBtn_Copy_Click" Grid.ColumnSpan="2" Grid.Column="1" Visibility="Hidden"/>
+        <CheckBox x:Name="resultsLocationCheckBox" Content="Custom Results File Location" HorizontalAlignment="Left" Margin="159,294,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Bahnschrift Light" FontSize="16" Grid.Column="1" Grid.ColumnSpan="2"/>
 
     </Grid>
 </Window>
